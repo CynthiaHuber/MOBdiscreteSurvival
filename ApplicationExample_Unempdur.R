@@ -42,7 +42,7 @@ sctest.modelparty(mobALL_2)
 
 mobALL_2%>%plot
 
-source("~/MOB_discSurv/MOBds_simulation/Functions/MOB_functions_MC_V5.R")
+source("MOBdS_function.R")
 
 
 MOBdS2_28_nresamp10000 <- glmtreeMC(y ~ -1+timeInt|age+ui+reprate+disrate+logwage+tenure,
