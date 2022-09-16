@@ -1,4 +1,5 @@
-#Function for MOB-dS
+#Function for MOB-dS, model-based recursive partitioning 
+#for discrete survival data using a permutation approach 
 
 #data: augmented data matrix
 #new parameters:
