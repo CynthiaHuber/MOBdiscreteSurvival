@@ -50,25 +50,9 @@ source("MOBdS_function.R")
 
 MOBdS2_28_nresamp10000 <- glmtreeMC(y ~ -1+timeInt|age+ui+reprate+disrate+logwage+tenure,
                                     data = UnempDur2_L,family=binomial(link=logit),
-                                    datenShort=UnempDur2,maxdepth=4,nresample = 10000,vcov="sandwich")
+                                    datenShort=UnempDur2,maxdepth=4,
+                                    nresample = 10000,vcov="sandwich")
 MOBdS2_28_nresamp10000%>%plot
 sctest.modelparty(MOBdS2_28_nresamp10000)
 
 
-
-mobALL_2_depth4 <-glmtree(y ~ timeInt|age+ui+reprate+disrate+logwage+tenure,
-                          data = UnempDur2_L ,family=binomial(link=logit),maxdepth=4,vcov="sandwich")
-
-
-sctest.modelparty(mobALL_2_depth4 )
-
-mobALL_2_depth4 %>%plot
-
-
-
-
-save(MOBdS2_28_nresamp10000,mobALL_2,
-     file = "~/MOB_discSurv/Anwendung_H0_V2/application_manuscript_lastinterval_Tlarger10_cens4.RData")
-
-
-load( "~/MOB_discSurv/Anwendung_H0_V2/application_manuscript_lastinterval_Tlarger10_cens4.RData")
