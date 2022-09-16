@@ -1,6 +1,7 @@
 
 #Stability test without calculation of the p-value
-#And adjusted outcome
+
+
 library(sandwich)
 library(strucchange) ## for root.matrix()
 library(partykit)    ## for mob_beta_suplm (in order to compute p-values)
