@@ -111,7 +111,7 @@ mobMC <- function(formula, data, subset, na.action, weights, offset, cluster,
   cluster <- mf[["(cluster)"]]
   
   #new arguments
-  datenShort <- datenShort%>%as.data.frame()
+  datenShort <- as.data.frame(datenShort)
   nresample <- nresample
   
   ## process pruning options (done here because of "n")
@@ -411,7 +411,7 @@ mob_partynode <- function(Y, X, Z, weights = NULL, offset = NULL, cluster = NULL
                                  datenShort)
   {  
     
-    source("~/MOB_discSurv/Simulation/dsMOB/MOB_MC_part1.R")
+    source("MOBdS_splitting.R")
     ## set up return values
     m <- NCOL(z)
     pval <- rep.int(NA_real_, m)
@@ -559,7 +559,6 @@ mob_partynode <- function(Y, X, Z, weights = NULL, offset = NULL, cluster = NULL
       #  print(j)
       #prepare permuted data
       id_shuffle_new <- sample(dim(datenShort)[1])
-      #id_shuffle_new <- 1:2000
       dat_1 <- (datenShort%>%dplyr::select(-"ID",-"CV"))
       covs_data <- (dat_1%>%dplyr::select(-"time.discrete",-"state",-"trt"))
       outcome_data <- (dat_1%>%dplyr::select("time.discrete","state","trt"))
