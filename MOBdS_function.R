@@ -565,8 +565,9 @@ mob_partynode <- function(Y, X, Z, weights = NULL, offset = NULL, cluster = NULL
       outcome_data <- (dat_1%>%dplyr::select("time.discrete","state","trt"))
       covs_perm <- covs_data[id_shuffle_new,]
       dat_perm_new <- cbind(outcome_data,covs_perm)%>%as.data.frame
-      datL_new <- dataLong(dat_perm_new ,timeColumn="time.discrete",censColumn="state")
+      datL_new <- dataLong(dat_perm_new ,timeColumn="time.discrete",eventColumn="state",timeAsFactor = T)
       m_perm <- update(obj,data=datL_new,family=obj$family)
+      
       estfun_perm <- sandwich::estfun(m_perm)
       #print(estfun_perm)
       #print(m_perm)
